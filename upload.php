@@ -28,22 +28,23 @@
         <!-- 純文字 和檔案格式(Binary二進位)不同的路線 -->
         <!-- encode type編碼方式，表單的是:多媒體部分/表單資料 -->
 
-        <input type="file" name="img" id="" >
+        <input type="file" name="img" id="">
         <!-- 檔案格式 -->
         <input type="text" name="name" id="" value="描述">
-        <!-- 文字格式name=name??? -->
+        <!-- 文字格式 -->
 
-        <!-- $_FILES php內建就有的變數，全域變數 -->
+        <!-- $_FILES php內建的變數，全域變數 -->
         <input type="submit" value="上傳">
     </form>
-    <!----建立一個連結來查看上傳後的圖檔---->
-<?php
-// 如果有圖片就要顯示
-if(isset($_GET['img'])){
-    echo "<img src='./imgs/{$_GET['img']}'>";
-}
 
-?>
+    <!----建立一個連結來查看上傳後的圖檔---->
+    <?php
+    // 如果有圖片就要顯示
+    if (isset($_GET['img'])) {
+        echo "<img src='./imgs/{$_GET['img']}' style='width:250px'>";
+    }
+
+    ?>
 
 </body>
 
