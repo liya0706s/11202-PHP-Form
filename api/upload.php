@@ -35,8 +35,10 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // 從tmp搬到 外面的img資料夾裡面
 
     header("location:../upload.php?img=".$filename);
-    // api傳值給前端upload
-    // 如何顯示上傳的檔案，一次性顯示GET比較快
+    // api 傳值給前端upload顯示上傳的檔案
+    // 一次性顯示GET比較快
+    // cookie, session也可以 
+    // 但這種一次性傳值session做完還需要unset; post在這邊不適用
     }else{
     header("location:../upload.php?err=上傳失敗");
 }
