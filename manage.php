@@ -17,21 +17,24 @@ include_once "db.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>檔案管理功能</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap-grid.min.css" integrity="sha512-zDDxSlYrbKTTfup/YyljmstpX+1jwjeg15AKS/fl26gRxfpD+HMr6dfuJQzCcFtoIEjf93SuCffose5gDQOZtg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.min.js" integrity="sha512-eHx4nbBTkIr2i0m9SANm/cczPESd0DUEcfl84JpIuutE6oDxPhXvskMR08Wmvmfx5wUpVjlWdi82G5YLvqqJdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
     <h1 class="header">檔案管理練習</h1>
     <!----建立上傳檔案表單及相關的檔案資訊存入資料表機制----->
     <h3><a href="upload.php">上傳檔案</a></h3>
+    
+    
+    
+    
     <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
     <?php
     $files = all('files');
     ?>
-    <!-- <div class="row"> -->
     <div class="col-8 mx-auto">
-        <table class="table table-success table-striped">
+        <table class="table table-success">
             <tr>
                 <td>id</td>
                 <td>檔名</td>
@@ -39,30 +42,60 @@ include_once "db.php";
                 <td>大小</td>
                 <td>描述</td>
                 <td>上傳時間</td>
+                <td>操作</td>
             </tr>
             <?php
+            
+            
             // 把files表裡的資料指定給file變數
             foreach ($files as $file) {
+                switch ($file['type']) {
+                    case "image/webp";
+                    case "image/jpeg";
+                    case "image/png";
+                    case "image/gif";
+                    case "image/bmp";
+                        $imgname = "./imgs/".$file['name'];
+                    break;
+                    case "msword";
+                        $imgname="./icon/wordicon";
+                    break;
+                    case "";
+                        $imgname="./icon/msexcel.png";
+                    break;
+                    case "";
+                        $imgname="./icon/msppt.png";
+                    break;
+                    case "";
+                        $imgname="./icon/pdg.png";
+                    break;
+                    default;
+                        $imgname="./icon/other.png";
+                    break;
+                }
             ?>
                 <tr>
+                    <!-- 這邊有id -->
                     <td><?= $file['id'] ?></td>
                     <td>
-                        <!-- 資料夾裡面的檔名$file['name'] -->
-                        <img src="imgs/<?= $file['name'] ?>" alt="" class="thumbs">
+                        <!-- 資料夾裡面的檔名$file['name']=$imgname -->
+                        <img class="thumbs" src="<?= $imgname;?>">
                     </td>
                     <td><?= $file['type'] ?></td>
                     <td><?= $file['size'] ?></td>
                     <td><?= $file['desc'] ?></td>
                     <td><?= $file['create_at'] ?></td>
+                    <td>
+                        <button class="btn btn-info">編輯Edit</button>
+                        <button class="btn btn-danger"><a href="./api/del_file.php">刪除Del</a></button>
+                    </td>
                 </tr>
             <?php
             }
             ?>
         </table>
     </div>
-    <!-- </div> -->
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- bs5 js通常放在 /body前面 -->
 </body>
 

@@ -10,7 +10,6 @@ include_once "../db.php";
 // 文件被上傳後，在服務端儲存的臨時文件名
 // $_FILES['userfile']['tmp_name']
 if (!empty($_FILES['img']['tmp_name'])) {
-
     // 輸出上傳的文件的臨時文件名
     // echo $_FILES['img']['tmp_name'];
     // echo "<br>";
@@ -32,15 +31,50 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // move_uploaded_file 將上傳的新文件搬移到，參數，從哪邊搬到哪邊，檔名帶入方便管理
     // move_uploaded_file(file, dest)
 
-    $files = ['name' => $filename,
-            'type'=>$_FILES['img']['type'],
-            'size'=> $_FILES['img']['size'],
-            'desc'=> $_POST['desc']];
+    // mime types:
+    // .docs -> application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    // .xlsx -> application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    // .pptx -> application/vnd.openxmlformats-officedocument.presentationml.presentation
+    // .pdf -> application/pdf
+    // .png -> image/png
+    // .webp -> image/webp
+    // .jpg/.jpeg -> image/jpeg
 
-            // include_once會有$pdo抓設定好的資料
-            // id會自動增加不用田
-            // create_at有屬性 current_timestamp()
-    insert('files', $files);
+    switch ($_FILES['img']['type']) {
+        case "";
+            $type = "";
+        break;
+        case "";
+            $type = "";
+        break;
+        case "";
+            $type = "";
+        break;
+        case "";
+            $type = "";
+        break;
+        case "";
+        case "";
+        case "";
+        case "";
+        case "";
+            $type=$_FILES[''][''];
+        break;
+        default:
+            $type="other";
+    }
+
+
+    $file = [
+        'name' => $filename,
+        'type' => $_FILES['img']['type'],
+        'size' => $_FILES['img']['size'],
+        'desc' => $_POST['desc']];
+
+    // include_once會有$pdo抓設定好的資料
+    // id會自動增加不用田
+    // create_at有屬性 current_timestamp()
+    insert('files', $file);
 
     header("location:../manage.php");
     // header("location:../upload.php?img=".$filename);
@@ -51,13 +85,3 @@ if (!empty($_FILES['img']['tmp_name'])) {
 } else {
     header("location:../upload.php?err=上傳失敗");
 }
-
-// 假設 $_FILES['img']['name'] 的值是 "example_file.jpg"，
-// 那麼 explode(".", $_FILES['img']['name']) 會產生以下的陣列：
-// Array
-// (
-//     [0] => example_file
-//     [1] => jpg
-// )
-// 陣列中的第一個元素是 "example_file"，第二個元素是 "jpg"。
-// 這樣你就能夠從這個陣列中取得檔案的副檔名，而在這個例子中，副檔名是 "jpg"。

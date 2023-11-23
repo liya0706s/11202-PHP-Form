@@ -24,6 +24,13 @@
 <body>
     <h1 class="header">檔案上傳練習</h1>
     <!----建立你的表單及設定編碼----->
+    <?php
+
+    if(isset($_GET['err'])){
+        echo $_GET['err'];
+    }
+    ?>
+
 
     <form action="./api/upload.php" method="post" enctype="multipart/form-data">
         <!-- 關鍵要背:檔案上傳POST，所有檔案內容轉成文字給伺服器端， -->
@@ -33,7 +40,7 @@
         <input type="file" name="img" id="">
         <!-- 檔案格式 -->
         <input type="text" name="desc" id="" value="" placeholder="請輸入檔案描述">
-        <!-- 文字格式 -->
+        <!-- 文字格式描述 -->
 
         <!-- $_FILES php內建的變數，全域變數 -->
         <input type="submit" value="上傳">
@@ -43,7 +50,7 @@
     <?php
     // 如果有圖片就要顯示
     if (isset($_GET['img'])) {
-        echo "<img src='./imgs/{$_GET['img']}' style='width:250px'>";
+        echo "<img src='./imgs/{$_GET['img']}' style='width:250px;height:150px'>";
     }
 
     ?>
