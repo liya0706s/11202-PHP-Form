@@ -1,6 +1,7 @@
 <?php
 include_once "db.php";
 // 判斷網址是否友直
+// 判斷是否有id
 if (isset($_GET['id'])) {
 }
 $file = find('')
@@ -55,7 +56,7 @@ $file = find('')
                 </tr>
 
                 <tr>
-                    <td></td>
+                    <td>說明</td>
                     <td></td>
                     <!-- textarea沒有value可以直接輸入，他沒有結束標籤 -->
                 </tr>
@@ -63,6 +64,8 @@ $file = find('')
         </div>
 
         <div class="text-center m-3">
+        <input type="submit" name="id"value="更新">
+        post id去給 edit_file.php
             <input type="submit" value="更新">
         </div>
 

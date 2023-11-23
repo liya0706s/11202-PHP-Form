@@ -38,9 +38,7 @@
         <!-- encode type編碼方式，表單的是:多媒體部分/表單資料 -->
 
         <input type="file" name="img" id="">
-        <!-- 檔案格式 -->
         <input type="text" name="desc" id="" value="" placeholder="請輸入檔案描述">
-        <!-- 文字格式描述 -->
 
         <!-- $_FILES php內建的變數，全域變數 -->
         <input type="submit" value="上傳">
