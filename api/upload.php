@@ -10,15 +10,6 @@ include_once "../db.php";
 // 文件被上傳後，在服務端儲存的臨時文件名
 // $_FILES['userfile']['tmp_name']
 if (!empty($_FILES['img']['tmp_name'])) {
-    // 輸出上傳的文件的臨時文件名
-    // echo $_FILES['img']['tmp_name'];
-    // echo "<br>";
-    // echo $_FILES['img']['name'];
-    // echo "<br>";
-    // echo $_FILES['img']['type'];
-    // echo "<br>";
-    // echo $_FILES['img']['size'];
-
     // 更改檔名，不會跟別人撞名，容納規範
     $tmp = explode(".", $_FILES['img']['name']);
     $subname = "." . end($tmp);

@@ -71,7 +71,7 @@ include_once "db.php";
                 }
             ?>
                 <tr>
-                    <!-- 這邊有id -->
+                    <!-- 這邊有id，編輯的時候可以取得 -->
                     <td><?= $file['id'] ?></td>
                     <td>
                         <!-- 資料夾裡面的檔名$file['name']=$imgname -->
