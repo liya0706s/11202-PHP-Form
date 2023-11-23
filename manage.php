@@ -25,10 +25,10 @@ include_once "db.php";
     <h1 class="header">檔案管理練習</h1>
     <!----建立上傳檔案表單及相關的檔案資訊存入資料表機制----->
     <h3><a href="upload.php">上傳檔案</a></h3>
-    
-    
-    
-    
+
+
+
+
     <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
     <?php
     $files = all('files');
@@ -44,9 +44,8 @@ include_once "db.php";
                 <td>上傳時間</td>
                 <td>操作</td>
             </tr>
+
             <?php
-            
-            
             // 把files表裡的資料指定給file變數
             foreach ($files as $file) {
                 switch ($file['type']) {
@@ -55,23 +54,23 @@ include_once "db.php";
                     case "image/png";
                     case "image/gif";
                     case "image/bmp";
-                        $imgname = "./imgs/".$file['name'];
-                    break;
+                        $imgname = "./imgs/" . $file['name'];
+                        break;
                     case "msword";
-                        $imgname="./icon/wordicon";
-                    break;
-                    case "";
-                        $imgname="./icon/msexcel.png";
-                    break;
-                    case "";
-                        $imgname="./icon/msppt.png";
-                    break;
-                    case "";
-                        $imgname="./icon/pdg.png";
-                    break;
+                        $imgname = "./icon/wordicon";
+                        break;
+                    case "msexcel";
+                        $imgname = "./icon/msexcel.png";
+                        break;
+                    case "msppt";
+                        $imgname = "./icon/msppt.png";
+                        break;
+                    case "pdf";
+                        $imgname = "./icon/pdf.png";
+                        break;
                     default;
-                        $imgname="./icon/other.png";
-                    break;
+                        $imgname = "./icon/other.png";
+                        break;
                 }
             ?>
                 <tr>
@@ -80,15 +79,23 @@ include_once "db.php";
                     <td>
                         <!-- 資料夾裡面的檔名$file['name']=$imgname -->
                         <!-- CSS thumbs縮圖 -->
-                        <img class="thumbs" src="<?= $imgname;?>">
+                        <img src="<?= $imgname; ?>">
                     </td>
                     <td><?= $file['type'] ?></td>
                     <td><?= $file['size'] ?></td>
                     <td><?= $file['desc'] ?></td>
                     <td><?= $file['create_at'] ?></td>
                     <td>
-                        <button class="btn btn-info">編輯Edit</button>
-                        <button class="btn btn-danger"><a href="./api/del_file.php">刪除Del</a></button>
+
+                        <!-- 修改檔名 檔案圖片 描述-->
+                        <!-- 更改檔名除了會新增檔名，還要刪除原本的檔名 -->
+                        <!-- 其他類型 大小 和上傳時間是系統屬性中自己抓的 不改 -->
+                        <button class="btn btn-info" onclick="location.href'./edit_file.php?id=<? $file['id'] ?>'">編輯Edit</button>
+
+                        <!-- 以ˇ下註解要再修正 -->
+                        <!-- <button class="btn btn-danger"><a href="./api/del_file.php?id=<? //$file['id']
+                                                                                            ?>">刪除Del</a></button> -->
+                        <button class="btn btn-danger" onclick="location.href'./api/del_file.php?id=<? $file['id'] ?>'">刪除Del</a></button>
                     </td>
                 </tr>
             <?php

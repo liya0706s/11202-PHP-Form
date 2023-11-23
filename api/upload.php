@@ -21,14 +21,10 @@ if (!empty($_FILES['img']['tmp_name'])) {
 
     // 更改檔名，不會跟別人撞名，容納規範
     $tmp = explode(".", $_FILES['img']['name']);
-    // 以第一個參數點點做分割，explode()陣列
-    // 炸開黨名 變成陣列中兩個元素 pic.jpg 
     $subname = "." . end($tmp);
     // end($tmp) 函數用於取得陣列 $tmp 的最後一個元素
     $filename = date("YmdHis") . rand(10000, 99999) . $subname;
-    // rand()..生成一個介於 10000 和 99999 之間的隨機整數
     move_uploaded_file($_FILES['img']['tmp_name'], "../imgs/" . $filename);
-    // move_uploaded_file 將上傳的新文件搬移到，參數，從哪邊搬到哪邊，檔名帶入方便管理
     // move_uploaded_file(file, dest)
 
     // mime types(檔案類型):
@@ -39,27 +35,27 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // .png -> image/png
     // .webp -> image/webp
     // .jpg/.jpeg -> image/jpeg
-    跟資料講要哪種檔案類型，轉換成好辨識的type，在管理的頁面可以對應的png檔
+    // 跟資料講檔案類型判斷，轉換成好辨識的type，在管理的頁面可以有對應的png檔
 
     switch ($_FILES['img']['type']) {
-        case "";
-            $type = "";
+        case "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            $type = "msword";
         break;
-        case "";
-            $type = "";
+        case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            $type = "msexcel";
         break;
-        case "";
-            $type = "";
+        case "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            $type = "msppt";
         break;
-        case "";
-            $type = "";
+        case "application/pdf";
+            $type = "pdf";
         break;
-        case "";
-        case "";
-        case "";
-        case "";
-        case "";
-            $type=$_FILES[''][''];
+        case "image/webp";
+        case "image/jpeg";
+        case "image/png";
+        case "image/gif";
+        case "image/bmp";
+            $type=$_FILES['img']['type'];
         break;
         default:
             $type="other";
@@ -68,20 +64,18 @@ if (!empty($_FILES['img']['tmp_name'])) {
 
     $file = [
         'name' => $filename,
-        'type' => $_FILES['img']['type'],
+        'type' => $type,
         'size' => $_FILES['img']['size'],
         'desc' => $_POST['desc']];
 
-    // include_once會有$pdo抓設定好的資料
-    // id會自動增加不用田
+    // id會自動增加不用填
     // create_at有屬性 current_timestamp()
     insert('files', $file);
 
     header("location:../manage.php");
     // header("location:../upload.php?img=".$filename);
     // api 傳值給前端upload顯示上傳的檔案
-    // 一次性顯示GET比較快
-    // cookie, session也可以 
+    // 一次性顯示GET比較快cookie, session也可以 
     // 但這種一次性傳值session做完還需要unset; post在這邊不適用
 } else {
     header("location:../upload.php?err=上傳失敗");
