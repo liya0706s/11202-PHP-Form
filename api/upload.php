@@ -31,7 +31,8 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // move_uploaded_file 將上傳的新文件搬移到，參數，從哪邊搬到哪邊名字也要帶入確認不撞名
     // move_uploaded_file(file, dest)
 
-    header("location:../upload.php?img=".$filename);
+    header("location:../manage.php");
+    // header("location:../upload.php?img=".$filename);
     // api 傳值給前端upload顯示上傳的檔案
     // 一次性顯示GET比較快
     // cookie, session也可以 
