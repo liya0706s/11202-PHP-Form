@@ -37,7 +37,6 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // 以上資料夾下的檔名要改
     // filename to $_POST['name']
 
-
     // 根據上傳檔案的類型進行分類判斷
     // 建立變數名稱方便之後使用
     switch ($_FILES['img']['type']) {
