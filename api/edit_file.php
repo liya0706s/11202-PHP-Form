@@ -8,9 +8,11 @@ include_once "../db.php";
 // 如果有上傳成功，函式內的變數例如tmp,subname,filename才存在
 // 沒上傳成功的話，檔名會是原檔名，不是$filename
 // $filename = date("YmdHis") . rand(10000, 99999) . $subname;
-// if(isset($_POST['id'])){
-
-// }
+if(isset($_POST['id'])){
+    $file=find('files',$_POST['id'])
+}else{
+    
+}
 
 // 從資料庫拿檔案
 $file = find('files', $_GET['id']);
