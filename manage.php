@@ -79,6 +79,7 @@ include_once "db.php";
                     <td><?= $file['id'] ?></td>
                     <td>
                         <!-- 資料夾裡面的檔名$file['name']=$imgname -->
+                        <!-- CSS thumbs縮圖 -->
                         <img class="thumbs" src="<?= $imgname;?>">
                     </td>
                     <td><?= $file['type'] ?></td>

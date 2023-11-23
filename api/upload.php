@@ -31,7 +31,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // move_uploaded_file 將上傳的新文件搬移到，參數，從哪邊搬到哪邊，檔名帶入方便管理
     // move_uploaded_file(file, dest)
 
-    // mime types:
+    // mime types(檔案類型):
     // .docs -> application/vnd.openxmlformats-officedocument.wordprocessingml.document
     // .xlsx -> application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
     // .pptx -> application/vnd.openxmlformats-officedocument.presentationml.presentation
@@ -39,6 +39,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // .png -> image/png
     // .webp -> image/webp
     // .jpg/.jpeg -> image/jpeg
+    跟資料講要哪種檔案類型，轉換成好辨識的type，在管理的頁面可以對應的png檔
 
     switch ($_FILES['img']['type']) {
         case "";
