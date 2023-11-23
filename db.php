@@ -1,7 +1,7 @@
 <?php
 // 資料庫連線
-$dsn = "mysql:host=localhost;charset=utf8;dbname=member";
-// 要更改dbname
+$dsn = "mysql:host=localhost;charset=utf8;dbname=material";
+// 要更改dbname:member->material
 
 $pdo = new PDO($dsn, 'root', '');
 // SESSION傳值開始
