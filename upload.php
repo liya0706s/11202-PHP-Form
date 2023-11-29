@@ -37,13 +37,13 @@
     }
     ?>
 
-
     <form action="./api/upload.php" method="post" enctype="multipart/form-data">
-        <!-- 關鍵要背:檔案上傳POST，所有檔案內容轉成文字給伺服器端， -->
-        <!-- 純文字 和檔案格式(Binary二進位)不同的路線 -->
-        <!-- encode type編碼方式，表單的是:多媒體部分/表單資料 -->
+        <!-- 關鍵要背:表單用POST，所有內容轉成文字給伺服器端， -->
+        <!-- 純文字 和 檔案格式(Binary二進位) 不同的路線 -->
+        <!-- encode type特殊編碼方式，表單的是:多媒體部分/表單資料 -->
 
-        <input type="file" name="img" id="">
+        <input type="file" name="img" id=""> 
+        <!-- name="img" 關乎到檔案上傳api/upload $_FILES['filename']['...'] -->
         <input type="text" name="desc" id="" value="" placeholder="請輸入檔案描述">
 
         <!-- $_FILES php內建的變數，全域變數 -->

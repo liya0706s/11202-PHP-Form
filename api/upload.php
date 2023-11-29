@@ -6,17 +6,16 @@ include_once "../db.php";
 // echo $_POST['desc'];
 // 輸出 POST 請求中的 'name' 參數的值，input type="text"
 // echo "<br>";
-// xampp/tmp資料夾，暫時存放臨時文件的地方
+
 // 文件被上傳後，在服務端儲存的臨時文件名
-// $_FILES['userfile']['tmp_name']
+// $_FILES['userfile']['tmp_name']  'userfile'是input type file 的name
 if (!empty($_FILES['img']['tmp_name'])) {
-    // 更改檔名，不會跟別人撞名，容納規範
+    // 如果tmp_name不是空的，代表上傳成功
     $tmp = explode(".", $_FILES['img']['name']);
     $subname = "." . end($tmp);
-    // end($tmp) 函數用於取得陣列 $tmp 的最後一個元素
+    // end($tmp) 函數用於取得陣列 $tmp 陣列中的最後一個元素
     $filename = date("YmdHis") . rand(10000, 99999) . $subname;
     move_uploaded_file($_FILES['img']['tmp_name'], "../imgs/" . $filename);
-    // move_uploaded_file(file, dest)
 
     // mime types(檔案類型):
     // .docs -> application/vnd.openxmlformats-officedocument.wordprocessingml.document
@@ -26,7 +25,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // .png -> image/png
     // .webp -> image/webp
     // .jpg/.jpeg -> image/jpeg
-    // 跟資料講檔案類型判斷，轉換成好辨識的type，在管理的頁面可以有對應的png檔
+    // 跟資料講檔案類型判斷，轉換成好辨識的type，在管理manage的頁面可以有對應的圖示
 
     switch ($_FILES['img']['type']) {
         case "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
