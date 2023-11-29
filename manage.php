@@ -89,7 +89,7 @@ include_once "db.php";
                         <!-- 其他類型 大小 和上傳時間是系統屬性中自己抓的 不改 -->
                         <button class="btn btn-info" onclick="location.href'./edit_file.php?id=<? $file['id'] ?>'">編輯Edit</button>
 
-                        <!-- 以ˇ下註解要再修正 -->
+                        <!-- 以下註解要再修正 -->
                         <!-- <button class="btn btn-danger"><a href="./api/del_file.php?id=<? //$file['id']
                                                                                             ?>">刪除Del</a></button> -->
                         <button class="btn btn-danger" onclick="location.href'./api/del_file.php?id=<? $file['id'] ?>'">刪除Del</a></button>
