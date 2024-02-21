@@ -28,27 +28,27 @@ if (!empty($_FILES['img']['tmp_name'])) {
     // 跟資料講檔案類型判斷，轉換成好辨識的type，在管理manage的頁面可以有對應的圖示
 
     switch ($_FILES['img']['type']) {
-        case "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
             $type = "msword";
-        break;
-        case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            break;
+        case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
             $type = "msexcel";
-        break;
-        case "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            break;
+        case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
             $type = "msppt";
-        break;
-        case "application/pdf";
+            break;
+        case "application/pdf":
             $type = "pdf";
-        break;
-        case "image/webp";
-        case "image/jpeg";
-        case "image/png";
-        case "image/gif";
-        case "image/bmp";
-            $type=$_FILES['img']['type'];
-        break;
+            break;
+        case "image/webp":
+        case "image/jpeg":
+        case "image/png":
+        case "image/gif":
+        case "image/bmp":
+            $type = $_FILES['img']['type'];
+            break;
         default:
-            $type="other";
+            $type = "other";
     }
 
 
@@ -56,7 +56,8 @@ if (!empty($_FILES['img']['tmp_name'])) {
         'name' => $filename,
         'type' => $type,
         'size' => $_FILES['img']['size'],
-        'desc' => $_POST['desc']];
+        'desc' => $_POST['desc']
+    ];
 
     // id會自動增加不用填
     // create_at有屬性 current_timestamp()
