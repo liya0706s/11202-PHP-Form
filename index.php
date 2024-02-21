@@ -13,6 +13,6 @@
 <a href="text-import.php"><div class="types">文字檔案處理</div></a>
 <a href="image.php"><div class="types">圖形處理-縮圖</div></a>
 <a href="image2.php"><div class="types">圖形處理-加邊框</div></a>
-
+<a href="filelist.php"><div class="types">aaa</div></a>
 </body>
 </html>

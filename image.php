@@ -54,7 +54,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
             imagebmp($dst_source, $dst_path);
             break;
     }
-   
+
     imagedestroy($source);
     imagedestroy($dst_source);
 }
@@ -84,7 +84,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
 
 
     <!----縮放圖形----->
-<img src="<?= $dst_path; ?>" alt="">
+    <img src="<?= $dst_path; ?>" alt="">
 
     <!----圖形加邊框----->
 
