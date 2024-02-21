@@ -11,11 +11,9 @@
  * 5.輸出檔案
  */
 
-// 確認圖片有沒有上傳
 if (!empty($_FILES['img']['tmp_name'])) {
     move_uploaded_file($_FILES['img']['tmp_name'], './imgs/' . $_FILES['img']['name']);
     $source_path = './imgs/' . $_FILES['img']['name'];
-    // 抓副檔名
     $type = $_FILES['img']['type'];
     switch ($type) {
         case 'image/jpeg':
@@ -54,7 +52,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
             imagebmp($dst_source, $dst_path);
             break;
     }
-   
+
     imagedestroy($source);
     imagedestroy($dst_source);
 }
@@ -84,7 +82,7 @@ if (!empty($_FILES['img']['tmp_name'])) {
 
 
     <!----縮放圖形----->
-<img src="<?= $dst_path; ?>" alt="">
+    <img src="<?= $dst_path; ?>" alt="">
 
     <!----圖形加邊框----->
 

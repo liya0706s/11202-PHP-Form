@@ -1,5 +1,5 @@
 <?php
-include_once "db.php";
+include_once "../db.php";
 
 // 從manage帶id過來
 $id=$_GET['id'];
