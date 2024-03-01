@@ -15,5 +15,6 @@
 <a href="image2.php"><div class="types">圖形處理-加邊框</div></a>
 <a href="filelist.php"><div class="types">aaa</div></a>
 <a href="captcha.php"><div class="types">圖形驗證碼</div></a>
+<a href="text-import.php"><div class="types">文字檔案匯入模式</div></a>
 </body>
 </html>
